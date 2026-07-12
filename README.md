@@ -34,3 +34,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Docs
 
 Planning and product docs live in the repo root (`1_Requirement_Framing.md`, `HelpDesk_Lite_PRD_Draft.md`, etc.). Implementation details are in `HelpDesk_Lite_Cursor_Implementation_Guide.md`.
+
+## GitHub
+
+Public repo: [ahmednagah031220/helpdesk-lite](https://github.com/ahmednagah031220/helpdesk-lite).
