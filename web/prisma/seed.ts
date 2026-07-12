@@ -307,10 +307,16 @@ async function main() {
         updatedAt,
         statusEvents: {
           create: mock.history.map((step) => {
-            const changedByUser =
-              step.changedBy === "submitter"
-                ? submitter
-                : (assignee ?? userByEmail["staff@helpdesk.local"]);
+            const staffUser = userByEmail["staff@helpdesk.local"];
+            let changedByUser;
+            if (step.changedBy === "submitter") {
+              changedByUser = submitter;
+            } else if (step.changedBy === "assignee") {
+              changedByUser = assignee ?? staffUser;
+            } else {
+              // "staff" — a staff actor, not necessarily the ticket assignee
+              changedByUser = staffUser;
+            }
 
             return {
               fromStatus: step.from,
