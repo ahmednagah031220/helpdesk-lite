@@ -1,0 +1,3 @@
+# How the AI workflow protects Day 1 and Day 2 quality
+
+We only give AI tasks that fit a written Stage 0/1 contract, and we refuse AI for product decisions and sole ownership of security calls. Each AI interaction gets a minimum context level (prompt, file, module, or evidence)—not the whole repo or secrets. Coding is plan-first: the human reviews the plan, then accepts a small diff. Bugs are judged with evidence (code path, type contract, API behavior), then an explicit keep / revise / reject / roll back decision. Before we rely on a tool capability, we check an official source (for example Prisma or Cursor docs) so Day 2 execution does not rest on stale assumptions.
