@@ -35,6 +35,10 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Planning and product docs live in the repo root (`1_Requirement_Framing.md`, `HelpDesk_Lite_PRD_Draft.md`, etc.). Implementation details are in `HelpDesk_Lite_Cursor_Implementation_Guide.md`.
 
+## Easy submission (AI workflow pack)
+
+Form-ready answers live in [`submission/`](./submission/00_INDEX.md) — AI task mapping, context/access plan, coding workflow, debugging example, staying-current plan, and walkthrough script.
+
 ## GitHub
 
 Public repo: [ahmednagah031220/helpdesk-lite](https://github.com/ahmednagah031220/helpdesk-lite).
