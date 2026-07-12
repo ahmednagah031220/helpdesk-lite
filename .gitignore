@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+web/node_modules/
+
+# Next.js
+web/.next/
+web/out/
+
+# Prisma generated client
+web/app/generated/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# OS / editor
+.DS_Store
+*.pem
+.vscode/
+.idea/
+
+# Debug / build artifacts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tsbuildinfo
+web/next-env.d.ts
+
+# Vercel
+.vercel
