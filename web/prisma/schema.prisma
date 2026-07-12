@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(EMPLOYEE)
+  createdAt DateTime @default(now())
+
+  submittedTickets Ticket[] @relation("SubmittedTickets")
+  assignedTickets  Ticket[] @relation("AssignedTickets")
+}
+
+enum Role {
+  EMPLOYEE
+  STAFF
+  MANAGER
+}
+
+model Ticket {
+  id           String        @id @default(cuid())
+  title        String
+  description  String
+  category     Category
+  status       TicketStatus  @default(OPEN)
+  submitter    User          @relation("SubmittedTickets", fields: [submitterId], references: [id])
+  submitterId  String
+  assignee     User?         @relation("AssignedTickets", fields: [assigneeId], references: [id])
+  assigneeId   String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  statusEvents StatusEvent[]
+
+  @@index([status])
+  @@index([assigneeId])
+  @@index([submitterId])
+}
+
+enum Category {
+  IT
+  HR
+  FACILITIES
+  OTHER
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+model StatusEvent {
+  id         String        @id @default(cuid())
+  ticket     Ticket        @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  ticketId   String
+  fromStatus TicketStatus?
+  toStatus   TicketStatus
+  changedBy  String?
+  changedAt  DateTime      @default(now())
+
+  @@index([ticketId])
+}
